@@ -21,7 +21,9 @@
 <!-- //Meta-Tags -->
 
 <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 
 <!-- Fonts -->
@@ -36,10 +38,43 @@
 
 	<h1>QUẢN TRỊ HỆ THỐNG</h1>
 	<div class="w3layoutscontaineragileits">
-	<h2>Đăng nhập tài khoản</h2>
-		<form action="#" method="post">
-			<input type="email" Name="Username" placeholder="Tên đăng nhập" required="">
-			<input type="password" Name="Password" placeholder="Mật khẩu" required="">
+		<h2>Đăng nhập tài khoản</h2>
+		@if ( Session::has('success') )
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<strong>{{ Session::get('success') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+			</div>
+		@endif
+		<?php //Hiển thị thông báo lỗi?>
+		@if ( Session::has('error') )
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<strong>{{ Session::get('error') }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+			</div>
+		@endif
+		@if ($errors->any())
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					<span class="sr-only">Close</span>
+				</button>
+			</div>
+		@endif
+		<form role="form" action="{{ url('/login') }}" method="POST">
+			{!! csrf_field() !!}
+			<input type="text" name="username" placeholder="Tên đăng nhập">
+			<input type="password" name="password" placeholder="Mật khẩu">
 			<ul class="agileinfotickwthree">
 				<li>
 					<input type="checkbox" id="brand1" value="">
@@ -47,55 +82,14 @@
 					<a href="#">Quên mật khẩu?</a>
 				</li>
 			</ul>
+			
 			<div class="aitssendbuttonw3ls">
 				<input type="submit" value="ĐĂNG NHẬP">
-				<p> Đăng ký tài khoản mới <span>→</span> <a class="w3_play_icon1" href="#small-dialog1"> Click Here</a></p>
+				<p> Đăng ký tài khoản mới <span>→</span> <a class="w3_play_icon1" href="{{ asset('admin/member-add')}}"> Click Here</a></p>
 				<div class="clear"></div>
 			</div>
 		</form>
 	</div>
-	
-	<!-- for register popup -->
-	<div id="small-dialog1" class="mfp-hide">
-		<div class="contact-form1">
-			<div class="contact-w3-agileits">
-				<h3>Đăng ký tài khoản</h3>
-				<form action="#" method="post">
-						<div class="form-sub-w3ls">
-							<input placeholder="User Name"  type="text" required="">
-							<div class="icon-agile">
-								<i class="fa fa-user" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="form-sub-w3ls">
-							<input placeholder="Email" class="mail" type="email" required="">
-							<div class="icon-agile">
-								<i class="fa fa-envelope-o" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="form-sub-w3ls">
-							<input placeholder="Password"  type="password" required="">
-							<div class="icon-agile">
-								<i class="fa fa-unlock-alt" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="form-sub-w3ls">
-							<input placeholder="Confirm Password"  type="password" required="">
-							<div class="icon-agile">
-								<i class="fa fa-unlock-alt" aria-hidden="true"></i>
-							</div>
-						</div>
-					<div class="login-check">
-						 <label class="checkbox"><input type="checkbox" name="checkbox" checked="">Tôi chấp nhận Điều khoản & Điều kiện trên.</label>
-					</div>
-					<div class="submit-w3l">
-						<input type="submit" value="Register">
-					</div>
-				</form>
-			</div>
-		</div>	
-	</div>
-	<!-- //for register popup -->
 	
 	<div class="w3footeragile">
 		
@@ -109,18 +103,17 @@
 	<!--//pop-up-box-js-file -->
 	<script>
 		$(document).ready(function() {
-		$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
-			type: 'inline',
-			fixedContentPos: false,
-			fixedBgPos: true,
-			overflowY: 'auto',
-			closeBtnInside: true,
-			preloader: false,
-			midClick: true,
-			removalDelay: 300,
-			mainClass: 'my-mfp-zoom-in'
-		});
-																		
+			$('.w3_play_icon,.w3_play_icon2').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
 		});
 	</script>
 

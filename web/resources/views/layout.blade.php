@@ -61,6 +61,9 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.min.css" >
+    @yield("style")
 </head>
 
 <body>
@@ -266,7 +269,11 @@
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<i class="icon nalika-user"></i>
-															<span class="admin-name">Tài khoản</span>
+															<span class="admin-name">
+                                                                @if (Auth::check())
+                                                                    {{ Auth::user()->name}}
+                                                                @endif
+                                                            </span>
 															<i class="icon nalika-down-arrow nalika-angle-dw"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
@@ -865,28 +872,28 @@
     <!-- scrollUp JS
 		============================================ -->
     <script src="{{ asset('js/jquery.scrollUp.min.js')}}"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="{{ asset('js/scrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script src="{{ asset('js/scrollbar/mCustomScrollbar-active.js')}}"></script>
- 
-    <!-- sparkline JS
-		============================================ -->
-    <script src="{{ asset('js/sparkline/jquery.sparkline.min.js')}}"></script>
-    <script src="{{ asset('js/sparkline/jquery.charts-sparkline.js')}}"></script>
 
-	<!-- float JS
-		============================================ -->
-    <script src="{{ asset('js/flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('js/flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ asset('js/flot/curvedLines.js') }}"></script>
-    <script src="{{ asset('js/flot/flot-active.js') }}"></script>
     <!-- plugins JS
 		============================================ -->
     <script src="{{ asset('js/plugins.js') }}"></script>
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('js/main.js') }}"></script>
+   
+    <!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+@yield("javascript")
+<script>
+$( document ).ready(function() {
+  $('#datepicker').datepicker();
+});
+</script>
+
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 @extends('../../layout')
 
 @section('content')
+@if (Auth::check())
+    @if( Auth::user()->level == 1)
     <div class="product-status mg-b-30">
         <div class="container-fluid">
             <div class="row">
@@ -13,78 +15,83 @@
                         <table>
                             <tr>
                                 <th>STT</th>
+                                <th>Tên đăng nhập</th>
                                 <th>Mã nhân viên</th>
-                                <th>Tên nhân viên</th>
+                                <th>Họ tên</th>
+                                <th>Số điện thoại</th>
                                 <th>Email</th>
                                 <th>Ngày sinh</th>
-                                <th>Quê quán</th>
+                                <th>Địa chỉ</th>
+                                <th>Cấp độ</th>
                                 <th>Xử lý</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>VN0040</td>
-                                <td>Nguyễn Văn Đức</td>
-                                <td>nguyenduc22@gmail.com</td>
-                                <td>1992/01/02</td>
-                                <td>Hà Nội</td>
-                                <td>
-                                    <a href="{{ asset('admin/member-edit') }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>VN0041</td>
-                                <td>Lê Duy Phương</td>
-                                <td>duyphuong556@@gmail.com</td>
-                                <td>1991/02/02</td>
-                                <td>Hà Nội</td>
-                                <td>
-                                    <a href="{{ asset('admin/member-edit') }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>VN0042</td>
-                                <td>Trần Bá Tùng</td>
-                                <td>batung32@@gmail.com</td>
-                                <td>1882/02/02</td>
-                                <td>Hòa Bình</td>
-                                <td>
-                                    <a href="{{ asset('admin/member-edit') }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <!-- <tr>
-                                <td><img src="../img/new-product/6-small.jpg" alt="" /></td>
-                                <td>Product Title 2</td>
-                                <td>
-                                    <button class="ps-setting">Paused</button>
-                                </td>
-                                <td>60</td>
-                                <td>$1020</td>
-                                <td>In Stock</td>
-                                <td>$17</td>
-                                <td>
-                                    <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                    <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </td>
-                            </tr> -->
-                           
+                            @if(isset($users[0]))
+                                @foreach ($users as $key => $user)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->user_cd }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->telephone }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->birthday }}</td>
+                                    <td>{{ $user->address }}</td>
+                                    <td>{{ $user->level }}</td>
+                                    <td>
+                                        <a href="{{ asset('admin/member-edit') }}"><button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                        <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </table>
+
+                        <?php
+                            // config
+                            $link_limit = 100; // maximum number of links
+                        ?>
                         <div class="custom-pagination">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                        @if ($users->lastPage() > 1)
+                        <ul class="pagination">
+                            <li class="{{ ($users->currentPage() == 1) ? ' disabled' : '' }}">
+                                <a href="{{ $users->url(1) }}">First</a>
+                            </li>
+                            @for ($i = 1; $i <= $users->lastPage(); $i++)
+                                <?php
+                                $half_total_links = floor($link_limit / 2);
+                                $from = $users->currentPage() - $half_total_links;
+                                $to = $users->currentPage() + $half_total_links;
+                                if ($users->currentPage() < $half_total_links) {
+                                $to += $half_total_links - $users->currentPage();
+                                }
+                                if ($users->lastPage() - $users->currentPage() < $half_total_links) {
+                                    $from -= $half_total_links - ($users->lastPage() - $users->currentPage()) - 1;
+                                }
+                                ?>
+                                @if ($from < $i && $i < $to)
+                                    <li class="{{ ($users->currentPage() == $i) ? ' active' : '' }}" {{ ($users->currentPage() == $i) ? 'aria-current="page"' : '' }}>
+                                        @if ($users->currentPage() == $i)
+                                                <span class="page-link" href="{{ $users->url($i) }}">{{ $i }}</span>
+                                        @else
+                                                <a href="{{ $users->url($i) }}">{{ $i }}</a>
+                                        @endif
+                                    </li>
+                                @endif
+                            @endfor
+                            <li class="{{ ($users->currentPage() == $users->lastPage()) ? ' disabled' : '' }}">
+                                <a href="{{ $users->url($users->lastPage()) }}">Last</a>
+                            </li>
+                        </ul>
+                        @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
+    @if( Auth::user()->level != 1)
+        <p style="color:white">Bạn không có quyền truy cập</p>
+    @endif
+@endif
 @stop

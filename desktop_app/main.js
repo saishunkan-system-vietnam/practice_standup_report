@@ -4,29 +4,29 @@ const path = require('path')
 
 function createWindow () {
   // Create the browser window.
-  // const loginWindow = new BrowserWindow({
-  //   width: 1800,
-  //   height: 1000,
-  //   webPreferences: {
-  //     preload: path.join(__dirname, 'preload.js')
-  //   }
-  // })
+  const loginWindow = new BrowserWindow({
+    width: 1800,
+    height: 1000,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
 
-  // const dailyWindow = new BrowserWindow({
-  //   width: 1800,
-  //   height: 1000,
-  //   webPreferences: {
-  //     preload: path.join(__dirname, 'preload.js')
-  //   }
-  // })
+  const dailyWindow = new BrowserWindow({
+    width: 1800,
+    height: 1000,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
 
-  // const manageJobWindow = new BrowserWindow({
-  //   width: 1800,
-  //   height: 1000,
-  //   webPreferences: {
-  //     preload: path.join(__dirname, 'preload.js')
-  //   }
-  // })
+  const manageJobWindow = new BrowserWindow({
+    width: 1800,
+    height: 1000,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
 
   const detailJobWindow = new BrowserWindow({
       width: 1800,
@@ -36,13 +36,10 @@ function createWindow () {
       }
     })
 
-  // loginWindow.loadFile('index.html')
-  // loginWindow.webContents.openDevTools();
-
-  //dailyWindow.loadFile('daily_report.html')
-
-  //manageJobWindow.loadFile('manage_job.html')
-
+  loginWindow.loadFile('index.html')
+  loginWindow.webContents.openDevTools();
+  dailyWindow.loadFile('daily_report.html')
+  manageJobWindow.loadFile('manage_job.html')
   detailJobWindow.loadFile('detail_job.html')
   
 }
