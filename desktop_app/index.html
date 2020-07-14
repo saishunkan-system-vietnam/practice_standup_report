@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    <meta name="csrf-token" content="XKAXSDFSDF1121ASDASD">
+    <title>Demo đầu tiên</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="includes/bootstrap3/css/bootstrap.css">
+    <link rel="stylesheet" href="includes/bootstrap3/css/bootstrap.min.css">
+    <script src="includes/bootstrap3/js/jquery-3.5.1.min.js"></script>
+    <script src="includes/bootstrap3/js/bootstrap.js"></script>
+    <script src="includes/bootstrap3/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <!-- <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>. -->
+    <div class="container">
+      <h2>Login</h2>
+      <!-- <form action="/action_page.php"> -->
+        <div class="form-group">
+          <label for="email">Email222:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember"> Ghi nhớ</label>
+        </div>
+        <button class="btn btn-default" id="sendForm">Đăng nhập</button>
+        <a href="sidebar/menu.html">Menu</a>
+      <!-- </form> -->
+    </div>
+    
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
