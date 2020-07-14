@@ -4,29 +4,47 @@ const path = require('path')
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
-
-    width: 1800,
-    height: 1000,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
-
-  // new BrowserWindow({
-  //   width: 400,
-  //   height: 300,
+  // const loginWindow = new BrowserWindow({
+  //   width: 1800,
+  //   height: 1000,
   //   webPreferences: {
   //     preload: path.join(__dirname, 'preload.js')
   //   }
   // })
 
-  // const backgroundColor = new BrowserWindow({
-  //   backgroundColor: '#228b22',
+  // const dailyWindow = new BrowserWindow({
+  //   width: 1800,
+  //   height: 1000,
+  //   webPreferences: {
+  //     preload: path.join(__dirname, 'preload.js')
+  //   }
   // })
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-  mainWindow.webContents.openDevTools();
+
+  // const manageJobWindow = new BrowserWindow({
+  //   width: 1800,
+  //   height: 1000,
+  //   webPreferences: {
+  //     preload: path.join(__dirname, 'preload.js')
+  //   }
+  // })
+
+  const detailJobWindow = new BrowserWindow({
+      width: 1800,
+      height: 1000,
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js')
+      }
+    })
+
+  // loginWindow.loadFile('index.html')
+  // loginWindow.webContents.openDevTools();
+
+  //dailyWindow.loadFile('daily_report.html')
+
+  //manageJobWindow.loadFile('manage_job.html')
+
+  detailJobWindow.loadFile('detail_job.html')
+  
 }
 
 // This method will be called when Electron has finished

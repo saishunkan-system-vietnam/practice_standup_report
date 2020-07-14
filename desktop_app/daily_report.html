@@ -1,17 +1,70 @@
-<div class="form">
-    <div class="mail"></div>
-    <h1>Mail form</h1>
-    <form action="">
-      <input type="text" placeholder="Your name"/>
-      
-      <input type="text" placeholder="E-mail"/>
-      
-      <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
-      
-      <div class="submit">Send</div>
-      
-    </form>
-  </div>
-  
-  <div class="ok_message">
-  <span>We'll answer you soon!</span></div>
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<!-- Head -->
+<head>
+<title>Báo cáo hàng ngày</title>
+<!-- Meta-Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="Existing Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+<!-- //Meta-Tags -->
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+</head>
+<!-- //Head -->
+<!-- Body -->
+<body>
+
+	<h1>HỆ THỐNG QUẢN LÝ</h1>
+	<div class="w3layoutscontaineragileits">
+	<h2>BÁO CÁO HÀNG NGÀY</h2>
+		<form id="daily_report" action="#" method="post">
+			<p>Kế hoạch làm việc hôm nay là gì?</p>
+      <textarea id="w3review" name="w3review" rows="4" cols="60" required="Yêu cầu nhập mục này"></textarea>
+      <p>Dự định sẽ thực hiện công việc như thế nào?</p>
+      <textarea id="w3review" name="w3review" rows="4" cols="60" required="Yêu cầu nhập mục này"></textarea>
+      <p>Dự định thời gian khi nào sẽ hoàn thành?</p>
+      <textarea id="w3review" name="w3review" rows="4" cols="60" required="Yêu cầu nhập mục này"></textarea>
+      <p>Khó khăn công việc ngày hôm qua gặp phải là gì?</p>
+      <textarea id="w3review" name="w3review" rows="4" cols="60" required="Yêu cầu nhập mục này"></textarea>
+			<div class="aitssendbuttonw3ls">
+				<input type="submit" value="Gửi">
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
+	<div class="w3footeragile">
+		
+	</div>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+	<!-- pop-up-box-js-file -->  
+		<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<!--//pop-up-box-js-file -->
+	<script>
+		$(document).ready(function() {
+		$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+																		
+		});
+	</script>
+
+</body>
+<!-- //Body -->
+
+</html>
