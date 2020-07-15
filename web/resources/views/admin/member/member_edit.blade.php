@@ -56,16 +56,13 @@
                         </div>
                     @endif
 
-                        <form action="{{ asset('admin/member-add')}}" method="post" id="registerFormMember">
+                        <form action="{{ asset('admin/member-edit')}}" method="post" id="updateFormMember">
                             {!! csrf_field() !!}
+                            <input type="hidden" name="user_cd" class="form-control" value="{{ $user->user_cd}}">
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <label>Tên đăng nhập <span>(*)</span></label>
                                     <input type="text" name="username" class="form-control" value="{{ $user->username}}">
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <label>Mã nhân viên <span>(*)</span></label>
-                                    <input type="text" name="user_cd" class="form-control" value="{{ $user->user_cd}}">
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Tên nhân viên <span>(*)</span></label>

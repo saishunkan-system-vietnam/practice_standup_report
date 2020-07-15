@@ -12,7 +12,7 @@ class MemberController extends Controller
 {
 
     public function __construct() {
-    	// $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -53,7 +53,7 @@ class MemberController extends Controller
 
     public function postRegisterMember(Request $request) {
         $allRequest  = $request->all();
-        $validator = $this->validator($allRequest);
+        $validator = $this->validatorRegister($allRequest);
         if ($validator->fails()) {
             return redirect('admin/member-add')->withErrors($validator)->withInput();
         } else {
@@ -67,7 +67,7 @@ class MemberController extends Controller
         }
     }
 
-    protected function validator(array $data)
+    protected function validatorRegister(array $data)
     {
         return Validator::make($data,
             [
@@ -96,6 +96,26 @@ class MemberController extends Controller
         );
     }
 
+    protected function validatorUpdate(array $data)
+    {
+        return Validator::make($data,
+            [
+                'username' => 'required|string|max:15',
+                'name' => 'required|string|max:22',
+                'email' => 'required|string|email|max:255',
+            ],
+            [
+                'username.required' => 'Tên đăng nhập là trường bắt buộc',
+                'username.max' => 'Tên đăng nhập không quá 15 ký tự',
+                'name.required' => 'Tên nhân viên là trường bắt buộc',
+                'name.max' => 'Tên nhân viên không quá 22 ký tự',
+                'email.required' => 'Email là trường bắt buộc',
+                'email.email' => 'Email không đúng định dạng',
+                'email.max' => 'Email không quá 255 ký tự',
+            ]
+        );
+    }
+
     protected function createMember(array $data)
     {
         $birthday = date('Y-m-d', strtotime($data['birthday']));
@@ -112,70 +132,66 @@ class MemberController extends Controller
         ]);
     }
 
-    public function editMember()
+    public function editMember($user_cd)
     {
         $user = DB::table('users')
             ->where([
-                'user_cd' => 'nv0092',
+                'user_cd' => $user_cd,
                 'del_flag' => 0])
             ->first();
-
+        $user->birthday = date('m/d/Y', strtotime($user->birthday));
         return view('admin/member/member_edit', ['user' => $user]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function postUpdateMember(Request $request) {
+        $data  = $request->all();
+        $validator = $this->validatorUpdate($data);
+        if ($validator->fails()) {
+            return redirect('admin/member-edit/'.$data['user_cd'])->withErrors($validator)->withInput();
+        } else {
+            if ($this->updateMember($data)) {
+                Session::flash('success', 'Update thành viên thành công!');
+                return redirect('admin/member-edit/'.$data['user_cd']);
+            } else {
+                Session::flash('error', 'Update thành viên thất bại!');
+                return redirect('admin/member-edit/'.$data['user_cd']);
+            }
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    protected function updateMember(array $data)
     {
-        //
+        $birthday = date('Y-m-d', strtotime($data['birthday']));
+        $result = DB::table('users')
+            ->where([
+                "users.user_cd" => $data['user_cd'],
+                "users.del_flag" => 0
+            ])
+            ->update([
+                'username' => $data['username'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'birthday' => $birthday,
+                'telephone' => $data['telephone'],
+                'address' => $data['address'],
+                'level' => $data['level']
+            ]);
+        return $result;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    protected function deleteMember(Request $request)
     {
-        //
+        $user_cd = $request->user_cd;
+        $result = DB::table('users')
+            ->where([
+                "users.user_cd" => $user_cd,
+            ])
+            ->update([
+                "users.del_flag" => 1
+            ]);
+        return response()->json([
+            'status' => 'Success',
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -11,13 +11,12 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    public function __construct()
-    {
-        //$this->middleware('auth');
-    }
-
     public function getLogin() {
-        return view('auth/login');
+        if (Auth::check()) {
+            return redirect('/');
+        } else {
+            return view('auth/login');
+        }
     }
 
     public function postLogin(Request $request) {

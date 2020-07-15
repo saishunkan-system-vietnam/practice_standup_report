@@ -947,7 +947,7 @@ ul.breadcome-menu li a:hover{
 	padding:20px;
 	background:#1b2a47;
 }
-.product-sales-chart, .analytics-info-cs, .tranffic-als-inner, .analytics-rounded, .single-new-trend, .personal-info-wrap, .author-widgets-single, .calender-inner, .product-status-wrap, .review-tab-pro-inner, .income-dashone-total, .analytics-nalika-wrap, .analytics-sparkle-line, .analysis-progrebar, .sparkline8-list, .sparkline9-list, .sparkline7-list, .sparkline10-list, .sparkline12-list, .sparkline13-list, .sparkline14-list, .sparkline13-list, .sparkline11-list, .x-editable-list, .code-editor-single, .blog-details-inner, .charts-single-pro, .about-sparkline, .sparkline-list, .button-ad-wrap, .tab-content-details, .sparkline16-list, .sparkline15-list, .tinymce-single{
+.product-sales-chart, .analytics-info-cs, .tranffic-als-inner, .analytics-rounded, .single-new-trend, .personal-info-wrap, .author-widgets-single, .calender-inner, .member-status-wrap, .review-tab-pro-inner, .income-dashone-total, .analytics-nalika-wrap, .analytics-sparkle-line, .analysis-progrebar, .sparkline8-list, .sparkline9-list, .sparkline7-list, .sparkline10-list, .sparkline12-list, .sparkline13-list, .sparkline14-list, .sparkline13-list, .sparkline11-list, .x-editable-list, .code-editor-single, .blog-details-inner, .charts-single-pro, .about-sparkline, .sparkline-list, .button-ad-wrap, .tab-content-details, .sparkline16-list, .sparkline15-list, .tinymce-single{
 	padding:20px;
 	background:#1b2a47;
 }
@@ -1203,7 +1203,7 @@ ul.two-part-sp li{
 .mini-navbar .header-top-area{
 	left: 80px;
 }
-.add-product a {
+.add-member a {
     float: right;
     position: absolute;
     top: 20px;
@@ -1217,36 +1217,36 @@ ul.two-part-sp li{
 	padding-top: 30px;
     padding-bottom: 30px;
 }
-.product-status-wrap h4 {
+.member-status-wrap h4 {
     font-size: 20px;
     color: #fff;
     margin-bottom: 20px;
 }
-.product-status-wrap table {
+.member-status-wrap table {
     width: 100%;
 }
-.product-status-wrap table th {
+.member-status-wrap table th {
     padding: 20px 5px;
     vertical-align: top;
     border-top: 1px solid #152036;
 }
-.product-status-wrap table th {
+.member-status-wrap table th {
     vertical-align: bottom;
     border-bottom: 2px solid #152036;
 	color:#fff;
 }
-.product-status-wrap th, .product-status-wrap td {
+.member-status-wrap th, .member-status-wrap td {
     padding: 10px;
     text-align: left;
     font-size: 14px;
 }
-.product-status-wrap table td {
+.member-status-wrap table td {
     padding: 9px 7px;
     border-top: 1px solid #152036;
 	color:#fff;
 	font-size:14px;
 }
-.product-status-wrap img {
+.member-status-wrap img {
     width: 60px;
 }
 .custom-pagination ul.pagination li a{
@@ -1257,7 +1257,7 @@ ul.two-part-sp li{
 .custom-pagination ul.pagination{
 	margin-bottom: 0px;
 }
-.product-status-wrap .pd-setting {
+.member-status-wrap .pd-setting {
     border: none;
     color: #fff;
     padding: 5px 15px;
@@ -1265,7 +1265,7 @@ ul.two-part-sp li{
     background: #24caa1;
     border-radius: 3px;
 }
-.product-status-wrap .ps-setting {
+.member-status-wrap .ps-setting {
     border: none;
     color: #fff;
     padding: 5px 15px;
@@ -1273,7 +1273,7 @@ ul.two-part-sp li{
     background: #2eb7f3;
     border-radius: 3px;
 }
-.product-status-wrap .ds-setting {
+.member-status-wrap .ds-setting {
     border: none;
     color: #fff;
     padding: 5px 15px;
@@ -1868,7 +1868,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
     background: #1b2a47;
     padding: 20px 20px;
 }
-.product-status-wrap.border-pdt-ct p{
+.member-status-wrap.border-pdt-ct p{
 	font-size:14px;
 	color:#fff;
 }
@@ -2047,11 +2047,11 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
     background: #152036;
 }
-.product-list-cart .product-status-wrap{
+.product-list-cart .member-status-wrap{
 	border: 0px solid rgba(0,0,0,.12);
 	padding:0px;
 }
-.product-list-cart .product-status-wrap table th{
+.product-list-cart .member-status-wrap table th{
 	border: 0px solid rgba(0,0,0,.12);
 }
 .product-list-cart h3{
@@ -2126,7 +2126,7 @@ ul.tab-custon-design li.active a, ul.tab-review-design li.active a{
 .product-cart-dn {
     display: none;
 }
-.product-status-wrap.border-pdt-ct{
+.member-status-wrap.border-pdt-ct{
 	box-shadow:none;
 }
 .product-payment-inner-st{
@@ -3678,4 +3678,8 @@ th.fc-day-header.fc-widget-header {
 
 .close {
 	top: -20px !important
+}
+
+.fa-pencil-square-o {
+    color: white;
 }

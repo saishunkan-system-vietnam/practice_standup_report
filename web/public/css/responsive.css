@@ -191,7 +191,7 @@
 .product-hisory-tln-ht {
     text-align: center;
 }
-.product-status-wrap{
+.member-status-wrap{
 	overflow-y: hidden;
 	width: 100%;
 }
@@ -227,7 +227,7 @@
     overflow-y: auto;
     height: 100%;
 }
-.product-list-cart .product-status-wrap{
+.product-list-cart .member-status-wrap{
 	width: 100% !important;
     overflow-x: auto;
     overflow-y: auto;

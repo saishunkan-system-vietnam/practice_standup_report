@@ -279,6 +279,7 @@
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                                         <li><a href="{{ asset('/login') }}"><span class="icon nalika-home author-log-ic"></span> Login</a>
                                                         </li>
+                                                         <!--
                                                         <li><a href="register.html"><span class="icon nalika-home author-log-ic"></span> Register</a>
                                                         </li>
                                                         <li><a href="#"><span class="icon nalika-user author-log-ic"></span> My Profile</a>
@@ -286,8 +287,8 @@
                                                         <li><a href="lock.html"><span class="icon nalika-diamond author-log-ic"></span> Lock</a>
                                                         </li>
                                                         <li><a href="#"><span class="icon nalika-settings author-log-ic"></span> Settings</a>
-                                                        </li>
-                                                        <li><a href="login.html"><span class="icon nalika-unlocked author-log-ic"></span> Log Out</a>
+                                                        </li> -->
+                                                        <li><a href="{{ asset('/logout')}}"><span class="icon nalika-unlocked author-log-ic"></span> Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -851,9 +852,7 @@
     <!-- jquery
 		============================================ -->
     <script src="{{ asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
-    <!-- bootstrap JS
-		============================================ -->
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+
     <!-- wow JS
 		============================================ -->
     <script src="{{ asset('js/wow.min.js')}}"></script>
@@ -876,17 +875,23 @@
     <!-- plugins JS
 		============================================ -->
     <script src="{{ asset('js/plugins.js') }}"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="{{ asset('js/main.js') }}"></script>
-   
+    
+
     <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<!-- MessageBox Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-message-box@3.2.2/dist/messagebox.min.css" >
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-message-box@3.2.2/dist/messagebox.min.js"></script>
+<!-- Datepicker Jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.en-GB.min.js" charset="UTF-8"></script>
+
 @yield("javascript")
 <script>
 $( document ).ready(function() {
