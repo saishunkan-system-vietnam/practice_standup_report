@@ -25,6 +25,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('member-edit/{user_cd}', 'Admin\MemberController@editMember');
     Route::post('member-edit', 'Admin\MemberController@postUpdateMember');
     Route::post('member-del', 'Admin\MemberController@deleteMember');
+});
 
+Route::group(['prefix' => 'api'], function () {
+    Route::post('login', 'ApiController@postLogin');
+    Route::post('save-daily-report', 'ApiController@saveDailyReport');
 });
 
