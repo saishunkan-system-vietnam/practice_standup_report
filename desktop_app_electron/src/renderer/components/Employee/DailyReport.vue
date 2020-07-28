@@ -47,8 +47,7 @@ import { required, minLength, maxLength, between } from 'vuelidate/lib/validator
       return {
 		 	errors : [],
 			daily_report: {
-				//user_cd: isset(this.$route.params.userCd)? this.$route.params.userCd : 'VN0001',
-				user_cd: 'VN0042',
+				user_cd: this.$route.params.userCd,
 				what_plan: '',
 				how_plan: '',
 				when_plan: '',

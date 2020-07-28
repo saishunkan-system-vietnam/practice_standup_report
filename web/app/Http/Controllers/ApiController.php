@@ -29,7 +29,6 @@ class ApiController extends Controller
             ];
         }
         return $arrResponse;
-        
     }
 
     public function saveDailyReport(Request $request)
@@ -140,7 +139,6 @@ class ApiController extends Controller
             'how_plan' => $data['how_plan'],
             'when_plan' => $data['when_plan'],
             'trouble_plan' => $data['trouble_plan'],
-            'status_report' => 1
         ]);
     }
 
@@ -166,8 +164,6 @@ class ApiController extends Controller
                 ];
                 return $arrResponse;
             }
-            // echo json_encode($result);
-            // die;
             $page_num = $allRequest['page_num'];
             $page_range = 5;
             $page_total = count($result);
@@ -243,7 +239,6 @@ class ApiController extends Controller
         }
         $infoDailyReport = $this->getInfoDailyReport($employee_cd, $data['start_time'], $data['end_time']);
 
-       
         //format date yyyy-mm-dd
         foreach($infoDailyReport as $row) {
                 $row->time_report_detail = $row->time_report;
@@ -308,7 +303,6 @@ class ApiController extends Controller
                 'daily_report.id'
             ,   'daily_report.user_cd'
             ,   'users.username'
-            ,   'daily_report.status_report'
             ,   'daily_report.updated_at AS time_report'
             ,   'daily_report.what_plan'
             ,   'daily_report.how_plan'
@@ -326,11 +320,6 @@ class ApiController extends Controller
     {
         $data  = $request->data;
         $arrResponse = [];
-        // $data['user_cd'] = 'VN0001';
-        // $data['time_report_detail'] = '2020-07-28 14:40:01';
-
-        // echo json_encode($data);
-        // die;
         $data = $this->funcGetInfoDetailReport($data['user_cd'], $data['time_report_detail']);
         if (isset($data->user_cd)) {
             $arrResponse = [

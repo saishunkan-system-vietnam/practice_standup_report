@@ -97,8 +97,6 @@
 			this.errors = [];
 			this.requestApi('http://appstandupreport.com/api/get-info-detail-report','POST', objData)
 			.then(response => {
-				console.log(response);
-				debugger;
 				if (response.data.status == 'Success') {
                     self.detail_job = response.data.detailReport;
                     this.flashMessageBox('success','Hiển thị thông tin chi tiết báo cáo');
