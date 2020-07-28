@@ -27,7 +27,7 @@ class MemberController extends Controller
      */
     public function listMember()
     {
-        $users = DB::table('users')->where('del_flag', 0)->paginate(2);
+        $users = DB::table('users')->where('del_flag', 0)->paginate(10);
         foreach ($users as $row) {
             if ($row->level == 1) {
                 $row->level = 'SuperAdmin';
@@ -54,6 +54,12 @@ class MemberController extends Controller
     public function postRegisterMember(Request $request) {
         $allRequest  = $request->all();
         $validator = $this->validatorRegister($allRequest);
+        $isUser = $this->checkUser($allRequest['user_cd']);
+        if ($isUser !== null) {
+            Session::flash('error', 'Mã nhân viên này đã tồn tại. Vui lòng chọn mã nhân viên khác.');
+            return redirect('admin/member-add');
+        }
+
         if ($validator->fails()) {
             return redirect('admin/member-add')->withErrors($validator)->withInput();
         } else {
@@ -65,6 +71,13 @@ class MemberController extends Controller
                 return redirect('admin/member-add');
             }
         }
+    }
+
+    public function checkUser($user_cd) {
+        $query = DB::table('users')
+        ->where('user_cd', $user_cd)
+        ->first();
+        return $query;
     }
 
     protected function validatorRegister(array $data)

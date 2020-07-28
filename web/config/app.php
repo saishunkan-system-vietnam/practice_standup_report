@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -228,5 +228,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'debug' => (bool) env('APP_DEBUG', true),
 ];

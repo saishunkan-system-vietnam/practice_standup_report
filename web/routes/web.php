@@ -30,5 +30,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'api'], function () {
     Route::post('login', 'ApiController@postLogin');
     Route::post('save-daily-report', 'ApiController@saveDailyReport');
+    Route::post('search-report', 'ApiController@searchReport');
+    Route::post('get-data-report', 'ApiController@getDataReport');
+    Route::post('get-info-detail-report', 'ApiController@getInfoDetailReport');
 });
 

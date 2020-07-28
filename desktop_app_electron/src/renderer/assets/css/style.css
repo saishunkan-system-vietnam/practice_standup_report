@@ -662,7 +662,6 @@ input[type="checkbox"] {
 
 .manage_job {
 	width: 80%;
-	margin: 0 auto;
     background: rgba(0, 0, 0, 0.5);
     padding: 30px;
 }
@@ -695,6 +694,7 @@ input[type="button"]:hover {
 #manage_job p{
 	margin: 10px 0px 10px 0px;
 	font-weight: bold;
+	color: white;
 }
 
 #manage_job label{
@@ -704,13 +704,13 @@ input[type="button"]:hover {
 
 #manage_job input[type="text"], #manage_job input[type="password"], #manage_job input[type="email"] {
 	width: 100%;
-	padding: 15px 10px 15px;
+	padding: 7px 9px 4px 10px;
 	font-size: 14px;
 	background: transparent;
 	border: 2px solid #537b35;
 	outline: none;
-	margin-bottom: 26px;
-	color: #fff;
+	margin-bottom: 0;
+	/* color: #fff; */
 	font-family: 'Quicksand', sans-serif;
 }
 
@@ -720,14 +720,14 @@ input[type="button"]:hover {
 
 .manage_job {
 	width: 50%;
-	margin: 0 auto;
+	margin: 120px auto;
     background: rgba(0, 0, 0, 0.5);
-    padding: 30px;
+	padding: 30px;
+	color: white;
 }
 
 #detail_job label {
 	float: left;
-	min-width: 200px;
 	text-align: left;
 	color: white;
 	font-weight: bold;
@@ -742,8 +742,7 @@ input[type="button"]:hover {
 	margin-bottom: 20px;
 }
 #detail_job .row div:last-child {
-	text-align: left;
-	margin-left: 15px;
+	text-align: justify;
 }
 
 /*--- Responsive Code ---*/
@@ -768,4 +767,23 @@ input[type="button"]:hover {
 
 .error:focus {
 	outline-color: #F99;
+}
+
+.text_color {
+	color: white;
+}
+
+.pagination {
+	margin-top: 20px;
+}
+
+.pagination a{
+	min-width: 30px;
+	border: 1px solid grey;
+	text-align: center;
+	padding: 10px 15px;
+}
+
+.manage_job .vdp-datepicker__calendar {
+	background: #537b35 !important;
 }

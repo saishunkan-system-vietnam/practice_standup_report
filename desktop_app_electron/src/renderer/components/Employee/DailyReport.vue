@@ -117,8 +117,7 @@ import { required, minLength, maxLength, between } from 'vuelidate/lib/validator
 				this.errors.push(errorResponse.error);
 			})
 			.finally(() => this.loading = false);
-			
-      } //end checkAccount
+      } //end sendReport
     }
   }
 </script>

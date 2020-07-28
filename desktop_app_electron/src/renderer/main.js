@@ -9,10 +9,14 @@ Vue.use(Vuelidate);
 
 import FlashMessage from '@smartweb/vue-flash-message';
 Vue.use(FlashMessage);
-
+import Datepicker from 'vuejs-datepicker';
+Vue.component('datepicker', Datepicker);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import moment from 'moment'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Paginate from 'vuejs-paginate'
+Vue.component('paginate', Paginate)
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
@@ -31,7 +35,11 @@ Vue.mixin({
     //redirect page
     redirect(url){
         window.location.href = url;
-    },
+	},
+	customFormatter(date) {
+		return moment(date).format('YYYY-MM-DD');
+	},
+	
     // show message
     flashMessageBox(statusMsg, textMsg) {
 		if(statusMsg == 'success') {
@@ -68,7 +76,10 @@ Vue.mixin({
 
 /* eslint-disable no-new */
 new Vue({
-  components: { App },
+  components: { 
+	  App, 
+	  Datepicker,
+  },
   router,
   store,
   template: '<App/>'
